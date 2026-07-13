@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogging Platform</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+
+        <a class="navbar-brand" href="/">📝 Blogging Platform</a>
+
+        <div class="ms-auto">
+
+            {% if user.is_authenticated %}
+
+                <span class="text-white me-3"> Welcome, {% if user.first_name %} {{ user.first_name }} {% else %} {{ user.username }}
+                                               {% endif %} </span>
+
+                <a class="btn btn-danger" href="{% url 'logout' %}"> Logout </a>
+
+            {% else %}
+
+                <a class="btn btn-outline-light me-2" href="{% url 'login' %}"> Login </a>
+
+                <a class="btn btn-warning" href="{% url 'register' %}"> Register </a>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+</nav>
+
+<div class="container mt-5">
+
+    {% block content %}
+
+    {% endblock %}
+
+</div>
+
+</body>
+</html>
