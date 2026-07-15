@@ -22,7 +22,7 @@ class Blog(models.Model):
 
     category = models.ForeignKey( Category, on_delete=models.CASCADE )
 
-    tags = models.ManyToManyField(Tag, blank=True)
+    tags = models.ManyToManyField(Tag)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

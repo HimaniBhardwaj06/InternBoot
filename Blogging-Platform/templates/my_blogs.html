@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="mb-5 fw-bold">
+
+    My Blogs ✍️
+
+</h1>
+
+{% if blogs %}
+
+<div class="row">
+
+{% for blog in blogs %}
+
+<div class="col-lg-6 mb-4">
+
+<div class="card shadow border-0 rounded-4">
+
+<div class="card-body">
+
+<h3>
+
+{{ blog.title }}
+
+</h3>
+
+<p class="text-muted">
+
+{{ blog.created_at|date:"M d, Y" }}
+
+</p>
+
+<p>
+
+{{ blog.content|truncatewords:30 }}
+
+</p>
+
+<a href="{% url 'blog_detail' blog.id %}"
+
+class="btn btn-primary rounded-pill">
+
+Read Blog →
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+{% else %}
+
+<div class="text-center">
+
+<h3>
+
+You haven't written any blogs yet.
+
+</h3>
+
+<a href="{% url 'create_blog' %}"
+
+class="btn btn-primary mt-3">
+
+Write Your First Blog
+
+</a>
+
+</div>
+
+{% endif %}
+
+{% endblock %}
