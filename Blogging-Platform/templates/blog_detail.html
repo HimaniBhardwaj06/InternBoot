@@ -1,0 +1,219 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+
+    <div class="col-lg-9">
+
+        <div class="card shadow-lg border-0 rounded-4">
+
+            <div class="card-body p-5">
+
+                <span class="badge bg-primary mb-3">
+
+                    {{ blog.category }}
+
+                </span>
+
+                <h1 class="fw-bold mb-3">
+
+                    {{ blog.title }}
+
+                </h1>
+
+                <div class="text-muted mb-4">
+
+                    👤
+
+                    {% if blog.author.first_name %}
+                        {{ blog.author.first_name }} {{ blog.author.last_name }}
+                    {% else %}
+                        {{ blog.author.username }}
+                    {% endif %}
+
+                    &nbsp;&nbsp;
+
+                    📅 {{ blog.created_at|date:"F d, Y" }}
+
+                </div>
+
+                <hr>
+
+                <div class="mt-4">
+
+                    <p style="font-size:18px; line-height:1.9;">
+
+                        {{ blog.content|linebreaks }}
+
+                    </p>
+
+                </div>
+
+                <hr class="my-4">
+                
+                {% if user == blog.author %}
+
+                <div class="mb-4">
+
+                    <a href="{% url 'edit_blog' blog.id %}"
+                    class="btn btn-warning rounded-pill me-2">
+
+                        ✏️ Edit Blog
+
+                    </a>
+
+                    <a href="{% url 'delete_blog' blog.id %}"
+                    class="btn btn-danger rounded-pill">
+
+                        🗑 Delete Blog
+
+                    </a>
+
+                </div>
+
+                {% endif %}
+
+                <div class="d-flex justify-content-between">
+
+                    <div>
+
+                    {% if user.is_authenticated %}
+
+                    <a href="{% url 'toggle_like' blog.id %}"
+                    class="btn btn-sm {% if liked %}btn-danger{% else %}btn-outline-danger{% endif %}">
+
+                        {% if liked %}
+                            ❤️ Unlike
+                        {% else %}
+                            🤍 Like
+                        {% endif %}
+
+                        ({{ blog.like_set.count }})
+
+                    </a>
+
+                    {% else %}
+
+                    <span>
+
+                        ❤️ {{ blog.like_set.count }} Likes
+
+                    </span>
+
+                    {% endif %}
+
+                    </div>
+
+                    <div>
+
+                        💬 <strong>{{ blog.comment_set.count }}</strong> Comments
+
+                    </div>
+
+                </div>
+
+                <hr class="my-5">
+
+                <h3 class="mb-4">
+                    Leave a Comment 💬
+                </h3>
+
+                {% if user.is_authenticated %}
+
+                <form method="POST">
+
+                    {% csrf_token %}
+
+                    {{ form.as_p }}
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary rounded-pill px-4">
+
+                        Post Comment
+
+                    </button>
+
+                </form>
+
+                {% else %}
+
+                <div class="alert alert-info">
+
+                    Please <a href="{% url 'login' %}">login</a> to post a comment.
+
+                </div>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+        <div class="mt-4">
+
+            <a href="{% url 'home' %}" class="btn btn-secondary rounded-pill">
+
+                ← Back to Home
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<hr class="my-5">
+
+<h3 class="mb-4"> Comments 💬 </h3>
+
+{% for comment in comments %}
+
+<div class="card mb-3 shadow-sm border-0">
+
+    <div class="card-body">
+
+        <h6 class="fw-bold">
+
+            👤
+
+            {% if comment.user.first_name %}
+                {{ comment.user.first_name }} {{ comment.user.last_name }}
+            {% else %}
+                {{ comment.user.username }}
+            {% endif %}
+
+        </h6>
+
+        <small class="text-muted">
+
+            {{ comment.created_at|date:"M d, Y • h:i A" }}
+
+        </small>
+
+        <p class="mt-3">
+
+            {{ comment.comment }}
+
+        </p>
+
+    </div>
+
+</div>
+
+{% empty %}
+
+<p class="text-muted">
+
+    No comments yet.
+    Be the first one to comment!
+
+</p>
+
+{% endfor %}
+
+{% endblock %}

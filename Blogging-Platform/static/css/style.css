@@ -1,0 +1,68 @@
+body{
+    background:#f5f7fb;
+}
+
+.card{
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.navbar-brand{
+    font-size:1.5rem;
+}
+
+.badge{
+    font-size:0.9rem;
+}
+
+.btn{
+    border-radius:30px;
+}
+
+.card-title{
+    font-weight:bold;
+}
+.hero-section{
+
+    background:linear-gradient(135deg,#4f46e5,#7c3aed);
+
+    padding:80px 40px;
+
+}
+
+.hero-section h1{
+
+    line-height:1.2;
+
+}
+
+.hero-section p{
+
+    max-width:700px;
+
+    margin:auto;
+
+}
+
+.card{
+
+    overflow:hidden;
+
+}
+
+.card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 20px 40px rgba(0,0,0,.15);
+
+}
+
+body{
+
+    background:#eef2f7;
+
+}

@@ -2,19 +2,115 @@
 
 {% block content %}
 
-<div class="text-center">
+<div class="p-5 mb-5 rounded-4 hero-section text-center">
 
-    <h1 class="display-4">
-        Welcome to My Blogging Platform
+    <h1 class="display-3 fw-bold text-white">
+
+        Share Your Ideas
+        <br>
+        Inspire the World 🌍
+
     </h1>
 
-    <p class="lead mt-3">
-        Read amazing blogs written by our community.
+    <p class="lead text-white mt-4">
+
+        Read amazing stories,
+        write your own blogs,
+        and connect with people who love sharing knowledge.
+
     </p>
 
-    <a href="#" class="btn btn-primary btn-lg mt-3">
-        Explore Blogs
+    {% if user.is_authenticated %}
+
+    <a href="{% url 'create_blog' %}" class="btn btn-light btn-lg rounded-pill mt-3 px-5">
+
+        ✍️ Start Writing
+
     </a>
+
+    {% endif %}
+
+</div>
+
+
+<h2 class="mb-4 fw-bold">
+
+    Latest Blogs
+
+</h2>
+
+
+<div class="row g-4">
+
+    {% for blog in blogs %}
+
+    <div class="col-lg-6">
+
+        <div class="card h-100 shadow-sm border-0 rounded-4">
+
+            <div class="card-body d-flex flex-column">
+
+                <h3 class="fw-bold">
+                    {{ blog.title }}
+                </h3>
+
+                <div class="mb-3 text-muted">
+
+                    👤
+
+                    {% if blog.author.first_name %}
+                        {{ blog.author.first_name }} {{ blog.author.last_name }}
+                    {% else %}
+                        {{ blog.author.username }}
+                    {% endif %}
+
+                    &nbsp;&nbsp;
+
+                    📅 {{ blog.created_at|date:"M d, Y" }}
+
+                </div>
+
+
+                <span class="badge bg-primary mb-3 align-self-start">
+
+                    {{ blog.category }}
+
+                </span>
+
+
+                <p class="text-secondary flex-grow-1">
+
+                    {{ blog.content|truncatewords:35 }}
+
+                </p>
+
+
+                <div class="mt-auto">
+
+                    <a href="{% url 'blog_detail' blog.id %}"
+                       class="btn btn-primary rounded-pill px-4">
+
+                        Read More →
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    {% empty %}
+
+    <div class="text-center">
+
+        <h3>No blogs have been published yet.</h3>
+
+    </div>
+
+    {% endfor %}
 
 </div>
 
