@@ -1,117 +1,90 @@
-# 📚 Library Management System
+# 🚀 InternBoot Internship Projects
 
-A **console-based Library Management System** developed using **Python** and **MySQL**. This application enables administrators to efficiently manage library books while allowing users to register, search, borrow, and return books through an interactive command-line interface.
-
----
-
-## 🚀 Features
-
-### 👨‍💼 Admin Module
-- Admin Login
-- Add New Books
-- View All Books
-- View Book Details
-- Update Book Details
-- Delete Books
-- Search Books
-- Generate Library Reports
-
-### 👤 User Module
-- User Registration
-- User Login
-- View Available Books
-- View Book Details
-- Search Books
-- Borrow Books
-- Return Books
-
-### 📊 Additional Features
-- MySQL Database Integration
-- Automatic Due Date Generation
-- Fine Calculation for Late Returns
-- Duplicate Email Validation
-- Duplicate Borrow Prevention
-- Password Validation
-- Phone Number Validation
-- Professional Console-Based Interface
+This repository contains all the projects completed during my internship at **InternBoot**.
 
 ---
 
-## 🛠️ Tech Stack
+# 📂 Projects
 
-- Python 3
+## 📋 Task Management App
+
+**Tech Stack**
+- React.js
+- Firebase Authentication
+- Cloud Firestore
+- Tailwind CSS
+- Vite
+
+**Features**
+- User Authentication
+- Add / Edit / Delete Tasks
+- Task Categories
+- Priority Levels
+- Dashboard
+- Progress Tracking
+- Search & Filter
+- Browser Notifications
+- Confetti Animation
+- Dark Mode
+- Responsive Design
+
+📁 Folder:
+
+```
+Task-Management-App/
+```
+
+---
+
+## 📚 Library Management System
+
+**Tech Stack**
+
+- Python
 - MySQL
-- mysql-connector-python
 
----
+**Features**
 
-## 📂 Project Structure
+- Admin Login
+- User Registration
+- Borrow / Return Books
+- Search Books
 
-```text
-Library Management System/
-│
-├── database/
-│   └── library_db.sql
-│
-├── docs/
-│
-├── screenshots/
-│
-├── src/
-│   ├── admin/
-│   ├── auth/
-│   ├── utils/
-│   └── main.py
-│
-├── README.md
-├── requirements.txt
-└── .gitignore
+📁 Folder:
+
+```
+Library Management system/
 ```
 
 ---
 
-## 🗄️ Database Tables
+## ✍️ Blogging Platform
 
-- users
-- books
-- borrow_records
+**Tech Stack**
 
----
+- Django
+- SQLite
+- HTML
+- CSS
 
-## ▶️ How to Run
+**Features**
 
-### 1. Clone the Repository
+- User Authentication
+- Create Blogs
+- Categories
+- Tags
+- Comments
 
-```bash
-git clone <repository-link>
+📁 Folder:
+
 ```
-
-### 2. Install Dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-### 3. Import the Database
-
-Import the `library_db.sql` file into MySQL.
-
-### 4. Run the Project
-
-```bash
-python3 main.py
+Blogging-Platform/
 ```
 
 ---
 
-## 📷 Screenshots
-
-Project screenshots are available in the **screenshots** folder.
-
----
-
-## 👩‍💻 Developer
+# 👩‍💻 Author
 
 **Himani Bhardwaj**
 
-**InternBoot Python Internship Project**
+Computer Science Engineering Student
